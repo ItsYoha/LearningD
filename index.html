@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tablero de Lanzamiento · Bolsas &amp; Café</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">☕</span>
+      <div>
+        <h1>Tablero de Lanzamiento</h1>
+        <p class="tagline">Buenas vibras, café y perros · septiembre 2026 → enero 2027</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button id="add-task" class="btn btn-primary">+ Nueva tarea</button>
+      <button id="toggle-timeline" class="btn">Línea de tiempo</button>
+      <button id="reset-board" class="btn btn-ghost">Reiniciar tablero</button>
+    </div>
+  </header>
+
+  <section id="timeline" class="timeline">
+    <div class="timeline-head">
+      <h2>Del ahora a enero</h2>
+      <p id="timeline-summary" class="muted"></p>
+    </div>
+    <div id="timeline-strip" class="timeline-strip"></div>
+  </section>
+
+  <main id="board" class="board" aria-label="Tablero Kanban"></main>
+
+  <div id="dialog-backdrop" class="dialog-backdrop" hidden>
+    <form id="task-form" class="dialog" novalidate>
+      <h2 id="dialog-title">Nueva tarea</h2>
+      <label>
+        Título
+        <input id="field-title" name="title" type="text" required maxlength="120" placeholder="Ej. Elegir proveedor print-on-demand" />
+      </label>
+      <label>
+        Descripción
+        <textarea id="field-description" name="description" rows="3" maxlength="500" placeholder="Detalles, enlaces, notas..."></textarea>
+      </label>
+      <div class="dialog-row">
+        <label>
+          Fecha límite
+          <input id="field-due" name="due" type="date" />
+        </label>
+        <label>
+          Prioridad
+          <select id="field-priority" name="priority">
+            <option value="alta">Alta</option>
+            <option value="media" selected>Media</option>
+            <option value="baja">Baja</option>
+          </select>
+        </label>
+      </div>
+      <label>
+        Columna
+        <select id="field-column" name="column"></select>
+      </label>
+      <p id="form-error" class="form-error" hidden>El título es obligatorio.</p>
+      <div class="dialog-actions">
+        <button type="button" id="dialog-cancel" class="btn btn-ghost">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
